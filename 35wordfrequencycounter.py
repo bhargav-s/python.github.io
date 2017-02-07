@@ -17,17 +17,23 @@ def frequency(url):
 def cleanword(word_count):
     clead_word_list = []
     for word in word_count:
-        symbols = "!@#$%^&*()_+=|\\}{[]:;<,>.?/'\""
+        symbols = "!@#$%^&*()-_+=|\\}{[]:;<,>.?/'\""
         for i in range(0 ,len(symbols)):
             word = word.replace(symbols[i],"")
         if len(word)>0:
-            print(word)
+            #print(word)
             clead_word_list.append(word)
+    create_dictonary(clead_word_list)
+
+def create_dictonary(clead_word_list):
+    word_counter = {}
+    for word in clead_word_list:
+        if word in word_counter:
+            word_counter[word] += 1
+        else:
+            word_counter[word] = 1
+    for key,value in sorted(word_counter.items(),key = operator.itemgetter(1)):
+            print(key,value)
 
 
-
-
-
-
-
-frequency('http://stackoverflow.com/questions')
+frequency(' INSERT url HERE')
